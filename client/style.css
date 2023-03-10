@@ -1,0 +1,22 @@
+body{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 30vh 70vh;
+    grid-template-areas: 
+    "dod"
+    "kands";
+}
+
+#dod{
+    grid-area: dod;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#kan{
+    grid-area: kands;
+    background-color: bisque;
+    align-items: center;
+    flex-direction: row;
+}
