@@ -35,11 +35,12 @@ app.get("/select", function(req, res){
     })
 })
 
-app.get("/add/:pesel", function(req, res){
+app.get("/add/:pesel/:kandydats", function(req, res){
     var pesel = req.params.pesel
+    var kandydats = req.params.kandydats
     
    
-    var sql = `INSERT INTO glosowanie(Pesel) VALUES ('${pesel}') `
+    var sql = `INSERT INTO glosowanie(Pesel, kandydat) VALUES ('${pesel}', '${kandydats}') `
 
     con.query(sql, function(err, result, fields){
         if(err) console.log(err)
@@ -63,6 +64,58 @@ app.get("/add/:pesel", function(req, res){
 
 // })
 
-app.listen(5523)
+app.get("/selectkans", function(req, res){
+
+    var sql = "SELECT * FROM kandydaci"
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        res.send(result)
+    })
+})
+
+app.get("/selboe", function(req, res){
+
+    var sql = "SELECT liczbaglosow FROM kandydaci WHERE ID_kandydata = 1"
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        res.send(result)
+    })
+})
+app.get("/selbar", function(req, res){
+
+    var sql = "SELECT liczbaglosow FROM kandydaci WHERE ID_kandydata = 2"
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        res.send(result)
+    })
+})
+app.get("/selpud", function(req, res){
+
+    var sql = "SELECT liczbaglosow FROM kandydaci WHERE ID_kandydata = 3"
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        res.send(result)
+    })
+})
+
+app.get("/plus/:ids", function(req, res){
+
+    const ids = req.params.ids
+
+    var sql = `UPDATE kandydaci SET liczbaglosow = liczbaglosow + 1 WHERE ID_kandydata = ${ids}`
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        console.log("incremented")
+    })
+})
+
+
+
+app.listen(port)
 
 

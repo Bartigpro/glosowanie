@@ -1,4 +1,8 @@
 body{
+    transition: all 3s ease-in-out;
+    transition: 2s;
+    color: aliceblue;
+    margin: 0%;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 30vh 70vh;
@@ -8,15 +12,53 @@ body{
 }
 
 #dod{
+    transition: all 3s ease-in-out;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     grid-area: dod;
-    background-color: beige;
+    background-color: rgb(46, 48, 49);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 #kan{
-    grid-area: kands;
-    background-color: bisque;
+    transition: all 3s ease-in-out;
+    padding-top: 10px;
+  
     align-items: center;
-    flex-direction: row;
+    
+    display: flex;
+    
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+   
+    grid-area: kands;
+    background-color: rgb(17, 17, 17);
+    
+   
 }
+
+#inp{
+    width: 150px;
+
+}
+#but{
+    width: 50px;
+}
+.kands{
+    transition: all 3s ease-in-out;
+    text-align: center;
+    padding: auto;
+    width: 280px;
+    height: 500px;
+    background-color: rgb(53, 53, 53);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue;
+    
+}
+
