@@ -50,7 +50,7 @@ async function Bar() {
      chartInstance = new Chart(ctx, {
        type: 'pie',
        data: {
-         labels: ['Jiden', 'Pudding', 'Obamium'],
+         labels: ['Boe Jiden', 'Władysław Pudding', 'Barrack Obamium'],
          color: "white",
          datasets: [{
            label: 'Ilość głosów',
@@ -121,3 +121,21 @@ setInterval(async function(){
   const d = await getData()
 }, 10000)
 
+async function getVotes(){
+
+  const datas = await fetch("http://localhost:1123/selvotes")
+  jsons = await datas.json()
+  console.log(jsons)
+
+  const last = document.getElementById("last")
+  const h1 = document.createElement("h1")
+  last.innerHTML = ""
+  h1.innerHTML = "Zostało oddanych już: " + jsons + " głosów"
+  last.appendChild(h1)
+
+}
+getVotes()
+
+setInterval(async function(){
+  const y = await getVotes()
+}, 10000)

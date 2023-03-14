@@ -118,4 +118,13 @@ app.get("/plus/:ids", function(req, res){
 
 app.listen(port)
 
+app.get("/selvotes", function(req, res){
+
+    var sql = `SELECT SUM(liczbaglosow) AS glosy FROM kandydaci`
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        res.send(result)
+    })
+})
 

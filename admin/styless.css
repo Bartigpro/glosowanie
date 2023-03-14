@@ -12,6 +12,10 @@ body{
 }
 
 #last{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     grid-area: last;
     background-color: rgb(49, 49, 49);
 }
