@@ -70,11 +70,11 @@ async function Bar() {
            title: {
              display: true,
              text: 'Custom Title',
-             color: '#f0ffff ' // set the color of the title text to red
+             color: '#f0ffff ' 
            },
            legend: {
              labels: {
-               color: 'white' // set the color of the labels in the legend to white
+               color: 'white'
              }
            }
          },
@@ -130,7 +130,7 @@ async function getVotes(){
   const last = document.getElementById("last")
   const h1 = document.createElement("h1")
   last.innerHTML = ""
-  h1.innerHTML = "Zostało oddanych już: " + jsons + " głosów"
+  h1.innerHTML = "Zostało oddanych już: " + jsons[0].glosy + " głosów"
   last.appendChild(h1)
 
 }
