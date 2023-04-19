@@ -66,6 +66,8 @@ async function Jiden(){
     const confirmed = confirm("Czy na pewno chcesz oddać swój głow na tego kandydata? Ta decyzja nie będzie odwracalna")
     var inp = document.getElementById("inp").value
     var input = document.getElementById("inp")
+
+   
     
 
     if(inp.length == ""){

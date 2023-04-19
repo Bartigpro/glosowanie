@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Głosowanie</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -10,14 +9,20 @@
 </head>
 <body id="body">
     <div id="dod">
-        <h1>Po wprowadzeniu PESEL'u, naciśnij na kontener jednego z kandydatów, aby oddać swój głos</h1>
-        <input type="text" id="inp" max="100000000000" maxlength="11" placeholder="Wprowadź pesel...">
+       <input type="text" id="login" placeholder="wpisz nazwę admina">
+       <input type="text" id="pass" placeholder="hasło">
+       <button onclick="getData()">zaloguj się</button>
     </div>
     <div id="kan">
+        <div id="site2">
+            <a href="admin.html" id="ahref">ADMIN PANEL</a>
+        </div>
+        
 
     </div>
   
     
 </body>
-<script src="app.js"></script>
+<script src="log.js"></script>
+
 </html>

@@ -91,35 +91,82 @@ async function Bar() {
   
 
 async function getData(){
-  const data = await fetch("http://localhost:1123/select")
-  json = await data.json()
-  console.log(json)
-
-  const tabela = document.getElementById("tabela")
-  tabela.innerHTML = ""
+  const tabela = document.getElementById("tabela");
   
+  // Create a WebSocket connection
+  const ws = new WebSocket('ws://localhost:1123');
   
+  // Add an event listener to the WebSocket object to listen for 'message' events
+  ws.addEventListener('message', event => {
+    // When a message is received, clear the existing table and redraw it with updated data
+    tabela.innerHTML = '';
+    drawTable();
+  });
+
+  // Helper function to draw the table with data from the server
+  async function drawTable() {
+    const response = await fetch('http://localhost:1123/select');
+    const data = await response.json();
+
+    // Create a table element and header row
+    const table = document.createElement('table');
+    const headerRow = document.createElement('tr');
+
+    // Add table headers
+    const headers = ['Column 1', 'Column 2'];
+    headers.forEach(headerText => {
+      const header = document.createElement('th');
+      const textNode = document.createTextNode(headerText);
+      header.appendChild(textNode);
+      headerRow.appendChild(header);
+    });
+
+    table.appendChild(headerRow);
+
+    // Add table rows
+    data.forEach(rowData => {
+      const row = document.createElement('tr');
+      const columns = ['column1', 'column2'];
+      columns.forEach(columnName => {
+        const cell = document.createElement('td');
+        const textNode = document.createTextNode(rowData[columnName]);
+        cell.appendChild(textNode);
+        row.appendChild(cell);
+      });
+      table.appendChild(row);
+    });
+
+    tabela.appendChild(table);
+  }
+
+  // Draw the initial table with data from the server
+  drawTable();
+}
 
 
-  for(var i=0;i<=json.length-1;i++){
-  const label = document.createElement("label")
-  const record = `
-    <p>Pesel: ${json[i].Pesel}</p>
-    <p>Wybrany kandydat: ${json[i].kandydat}</p>
-   
-  `;
-  label.classList.add("lab")
-  label.innerHTML = record;
+
+
+
+
+
+
+  
  
-  tabela.appendChild(label)
-}
-}
+
 
 getData()
 
-setInterval(async function(){
-  const d = await getData()
-}, 10000)
+
+const socket = new WebSocket('ws://localhost:1123');
+
+socket.addEventListener('message', event => {
+  getData();
+});
+
+
+// setInterval(async function(){
+//   const d = await getData()
+// }, 10000)
 
 async function getVotes(){
 
