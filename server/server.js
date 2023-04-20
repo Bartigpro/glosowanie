@@ -115,6 +115,41 @@ app.get("/plus/:ids", function(req, res){
 })
 
 
+app.get("/select/:login/:pass", function(req, res){
+    const login = req.params.login
+    const pass = req.params.pass
+
+    var sql = "SELECT * FROM `admini` WHERE 1"
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        else{
+            var fin
+
+            for(let i=0;i<=result.length-1;i++){
+                console.log(result[i].login)
+                console.log(result[i].pass)
+
+
+
+             if(result[i].login == login && result[i].pass == pass){
+                    fin = "access"
+                }
+
+            }
+            if(fin == undefined){
+                fin = "no access?"
+            }
+            res.send(fin)
+        } 
+    })
+})
+
+
+
+
+
+
 
 app.listen(port)
 

@@ -4,7 +4,7 @@ body{
     color: aliceblue;
     margin: 0%;
     display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 60% 40%;
     grid-template-rows: 40vh 60vh;
     grid-template-areas: 
     "last last"
@@ -20,9 +20,10 @@ body{
     background-color: rgb(49, 49, 49);
 }
 #tabela{
+
     gap: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     overflow-y: scroll;
     padding-left: 15px;
@@ -49,4 +50,31 @@ p{
     width: 265px;
     height: 100px;
     border: 10px solid #1f1f1f
+}
+td{
+    border: black solid 4px;
+}
+.tabelka{
+    border: black solid 4px;
+
+    border-collapse: separate;
+  border-spacing: 20px 30px;
+    gap: 40px;
+}
+
+.bar{
+
+    background-color: rgba(11, 116, 11, 0.658);
+
+}
+
+.boe{
+    background-color: rgb(4, 43, 128);
+
+}
+
+.wlad{
+
+    background-color: rgb(160, 0, 21);
+
 }
