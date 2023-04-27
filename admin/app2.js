@@ -98,39 +98,21 @@ async function getData(){
   const tabela = document.getElementById("tabela")
   tabela.innerHTML = ""
   
-
-  const table = document.createElement("table")
-  const tr = document.createElement("tr")
-  table.appendChild(tr)
-  const thp = document.createElement("th")
-  const thk = document.createElement("th")
   
 
-  
-  thp.innerHTML = "Pesel"
-  thk.innerHTML = "Wybrany knadydat"
-
-  tr.appendChild(thp)
-  tr.appendChild(thk)
 
   for(var i=0;i<=json.length-1;i++){
-  const tr2 = document.createElement("tr")  
-
-  const tdp = document.createElement("td")
-  const tdk = document.createElement("td")
-
-  tdp.innerHTML = json[i].Pesel
-  tdk.innerHTML = json[i].kandydat
-
-  tr2.appendChild(tdp)
-  tr2.appendChild(tdk)
-
-  table.appendChild(tr2)
-    
-
+  const label = document.createElement("label")
+  const record = `
+    <p>Pesel: ${json[i].Pesel}</p>
+    <p>Wybrany kandydat: ${json[i].kandydat}</p>
+   
+  `;
+  label.classList.add("lab")
+  label.innerHTML = record;
+ 
+  tabela.appendChild(label)
 }
-table.classList.add("tabelka")
-tabela.appendChild(table)
 }
 
 getData()

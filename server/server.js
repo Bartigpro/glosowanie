@@ -115,6 +115,22 @@ app.get("/plus/:ids", function(req, res){
 })
 
 
+
+app.listen(port)
+
+app.get("/selvotes", function(req, res){
+
+    var sql = `SELECT SUM(liczbaglosow) AS glosy FROM kandydaci`
+
+    con.query(sql, function(err, result, fields){
+        if(err) console.log(err)
+        res.send(result)
+    })
+})
+
+
+
+
 app.get("/select/:login/:pass", function(req, res){
     const login = req.params.login
     const pass = req.params.pass
@@ -130,8 +146,8 @@ app.get("/select/:login/:pass", function(req, res){
                 console.log(result[i].login)
                 console.log(result[i].pass)
 
-
-
+               
+                
              if(result[i].login == login && result[i].pass == pass){
                     fin = "access"
                 }
@@ -146,20 +162,7 @@ app.get("/select/:login/:pass", function(req, res){
 })
 
 
-
-
-
-
-
 app.listen(port)
 
-app.get("/selvotes", function(req, res){
 
-    var sql = `SELECT SUM(liczbaglosow) AS glosy FROM kandydaci`
-
-    con.query(sql, function(err, result, fields){
-        if(err) console.log(err)
-        res.send(result)
-    })
-})
 
